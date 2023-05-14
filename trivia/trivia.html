@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Parte 1: Multipla Escolha</h2>
+                <hr>
+                <h3>
+                    Qual país mais ganhou copas do mundo?
+                </h3>
+                <button id="a">
+                    Alemanha
+                </button>
+                <button id="b">
+                    França
+                </button>
+                <button id="c">
+                    Argentina
+                </button>
+                <button id ="d">
+                    Brasil
+                </button>
+                <h4 id = "mensagem"></h4>
+                <script>
+                        buttons = document.querySelectorAll("#a, #b, #c");
+                        buttons.forEach(button => {
+                            button.addEventListener("click", function () {
+                            let target = this;
+                            target.style.backgroundColor = "red"
+                            setTimeout (function () {
+                            target.style.backgroundColor = "";
+                            }, 800);
+                            document.getElementById("mensagem").innerHTML = "Resposta incorreta!";
+                            document.getElementById("mensagem").style.color = "red";
+                            setTimeout(function () {
+                                document.getElementById("mensagem").innerHTML = "";
+                            }, 800);
+                            });
+                            
+                        });
+                        document.getElementById("d").addEventListener("click", function () {
+                            let target = this;
+                            target.style.backgroundColor="green"
+                            setTimeout (function () {
+                            target.style.backgroundColor = "";
+                            }, 800);
+                            document.getElementById("mensagem").innerHTML = "Resposta correta!";
+                            document.getElementById("mensagem").style.color = "green";
+                            setTimeout(function () {
+                                document.getElementById("mensagem").innerHTML = "";
+                            }, 800);
+                            });
+                </script>
+            </div>
+
+            <div class="section">
+                <h2>Parte 2: Resposta Livre</h2>
+                <hr>
+                <h3>
+                    Qual escola da filosofia é atrbuida a Marcus Aurelius?
+                </h3>
+                <form onsubmit=chkanswer(); return false;"">
+                    <input type="text" placeholder="Resposta..." id="answer">
+                    <button type="submit">Responder!</button>
+                </form>
+                <h4 id="msg"></h4>
+                <script>
+                    function chkanswer() {
+                    let input = document.getElementById("answer");
+                    if (input.value.toLowerCase () === "estoicismo")
+                    {
+                        document.getElementById("msg").innerHTML= "Resposta correta!";
+                        document.getElementById("msg").style.color = "green";
+                        setTimeout(function () {
+                                document.getElementById("msg").innerHTML = "";
+                            }, 800);
+                    }
+                    else
+                    {
+                        document.getElementById("msg").innerHTML="Resposta incorreta!";
+                        document.getElementById("msg").style.color = "red";
+                        setTimeout(function () {
+                                document.getElementById("msg").innerHTML = "";
+                            }, 800);
+                    }
+                    event.preventDefault();
+                    };
+                </script>
+                <!-- TODO: Add free response question here -->
+            </div>
+        </div>
+    </body>
+</html>
